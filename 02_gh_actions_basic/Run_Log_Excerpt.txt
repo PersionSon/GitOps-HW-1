@@ -1,0 +1,23 @@
+Run echo "Repository: PersionSon/GitOps-HW-1"
+  echo "Repository: PersionSon/GitOps-HW-1"
+  echo "Branch: main"
+  echo "Actor: PersionSon"
+  echo "Commit: 8fddff43920c44f7b0edfb08521b35204cd7efef"
+  echo "Event: push"
+  uname -a
+  shell: /usr/bin/bash -e {0}
+Repository: PersionSon/GitOps-HW-1
+Branch: main
+Actor: PersionSon
+Commit: 8fddff43920c44f7b0edfb08521b35204cd7efef
+Event: push
+Linux runnervmmprz5 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+0s
+Run echo "Running smoke tests..."
+  echo "Running smoke tests..."
+  test -f 02_gh_actions_basic/README.md && echo "README.md found" || { echo "README.md missing"; exit 1; }
+  echo "All checks passed"
+  shell: /usr/bin/bash -e {0}
+Running smoke tests...
+README.md found
+All checks passed
