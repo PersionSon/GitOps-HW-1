@@ -1,0 +1,10 @@
+gitops-hw-01/
+└── 02_gh_actions_basic/
+    ├── .github/
+    │   └── workflows/
+    │       └── basic-ci.yml
+    ├── README.md
+    ├── actions_run_url.txt
+    ├── run_log_excerpt.txt
+    ├── workflow_checklist.md
+    └── common_mistakes.md
