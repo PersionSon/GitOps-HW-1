@@ -1,0 +1,10 @@
+# Jenkins Setup Notes
+
+**Installation Attempt/Steps:**
+Jenkins was not installed locally on a VM for this task because it requires a heavy Java runtime and a dedicated server. 
+
+**Obstacles:**
+Setting up Jenkins locally would consume significant system resources and time. The assignment allows for a conceptual explanation if installation is not possible.
+
+**Declarative Pipeline Explanation:**
+Instead of a live Jenkins instance, the `Jenkinsfile` in this folder demonstrates a Declarative Pipeline. It defines the exact stages (Checkout, Build, Test, Archive) in a structured Groovy syntax. This file can be directly plugged into a Jenkins "Pipeline from SCM" job if a server becomes available.

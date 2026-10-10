@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
+                sh '''
+                    echo "Building on $(uname -a)"
+                    echo "build-$(date -Iseconds)" > build-info.txt
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'test -f README.md && echo OK || exit 1'
+            }
+        }
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: 'build-info.txt', fingerprint: true
+            }
+        }
+    }
+}

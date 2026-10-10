@@ -1,0 +1,36 @@
+# Simulated Jenkins Build Evidence (Conceptual)
+
+Build Number: #1
+Result: SUCCESS
+Duration: 12 sec
+
+--- Console Output (Last 15 lines) ---
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+Cloning repository https://github.com/PersionSon/GitOps-HW-1.git
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] sh
++ uname -a
++ echo build-2023-10-27T10:00:00+00:00
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] sh
++ test -f README.md
++ echo OK
+OK
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Archive)
+[Pipeline] archiveArtifacts
+Archiving artifacts
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] End of Pipeline
+Finished: SUCCESS
