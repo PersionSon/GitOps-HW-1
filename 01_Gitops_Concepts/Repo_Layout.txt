@@ -1,0 +1,40 @@
+monorepo/
+├── .github/
+│   └── workflows/
+│       ├── ci.yaml              # build, test, push image
+│       └── update-manifest.yaml # bump image tag in deploy/
+│
+├── src/
+│   ├── main.py
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── deploy/
+│   ├── base/
+│   │   ├── kustomization.yaml
+│   │   ├── deployment.yaml
+│   │   ├── service.yaml
+│   │   └── configmap.yaml
+│   └── overlays/
+│       ├── staging/
+│       │   ├── kustomization.yaml
+│       │   └── patch-replicas.yaml
+│       └── production/
+│           ├── kustomization.yaml
+│           └── patch-replicas.yaml
+│
+├── docs/
+│   └── gitops.md
+│
+├── .gitignore
+└── README.md
+
+
+
+Notes:
+- .github/workflows/ = CI layer only (build + test + update image tag)
+- src/               = application source code
+- deploy/base/       = shared Kubernetes manifests
+- deploy/overlays/   = environment overrides (staging / production)
+- Argo CD / Flux     = NOT installed here; they run inside the cluster
+                       and pull from this repo

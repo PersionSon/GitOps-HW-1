@@ -1,0 +1,49 @@
+name: Matrix and Cache
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build on Node ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Create report
+        run: |
+          mkdir -p reports
+          echo "Report for Node version ${{ matrix.node-version }}" > reports/report-${{ matrix.node-version }}.txt
+          echo "Commit: ${{ github.sha }}" >> reports/report-${{ matrix.node-version }}.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-node-${{ matrix.node-version }}
+          path: reports/
+
+  summarize:
+    name: Summarize
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: downloaded-reports
+
+      - name: Print artifacts
+        run: |
+          echo "=== Downloaded Artifacts ==="
+          find downloaded-reports -type f -exec cat {} \;

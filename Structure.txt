@@ -1,4 +1,4 @@
-gitops-hw-01/
+Gitops-hw-01/
 └── 02_gh_actions_basic/
     ├── .github/
     │   └── workflows/
